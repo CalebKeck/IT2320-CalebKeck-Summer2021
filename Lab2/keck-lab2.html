@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Fibonacci Sequence</title> 
+   <script>
+       "use strict"
+       var numFib = prompt("How many numbers in the sequence?"); 
+	   numFib = parseInt(numFib);
+       if (numFib < 3) {
+          alert("The sequence must have 3 or more numbers.");
+       } else {
+	      var myFib = [];  // declare the array
+		  myFib[0] = 0;
+		  myFib[1] = 1;
+		  // fill the array
+		  for (var i=2; i<numFib; i++) {
+		     myFib[i] = myFib[i-1] + myFib[i-2];
+			 console.log(i + " " + myFib[i]);
+		  }
+		  // write out the results
+		  for (i=0; i<numFib; i++) {
+		     document.write(myFib[i] + " " );
+		  }
+	   }
+	   var ratio = myFib[numFib-1] / myFib[numFib- 2];
+	   document.write("<br /><br />Ratio: " + ratio);
+	</script>
+</head> 
+<body>
+   <h2>Caleb Keck - IT 2320 - Lab 2</h2>
+   gee, why did this come out at the bottom?
+</body> 
+</html>
