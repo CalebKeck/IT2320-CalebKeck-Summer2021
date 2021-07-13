@@ -1,0 +1,179 @@
+<html>
+  <head>
+  <style>
+     .redtext { color: red; }
+     .blacktext { color: black; }
+  </style>
+  <script>
+      function processForm() {
+         // read all the values from input fields
+		 var lname = document.getElementById('lname').value;
+         var fname = document.getElementById('fname').value;
+         var address1 = document.getElementById('address1').value;
+         var address2 = document.getElementById('address2').value;
+         var city = document.getElementById('city').value;
+         var state = document.getElementById('state').value;
+         var zipcode = document.getElementById('zipcode').value;
+         var gender = document.getElementById('gender').value;
+         var dob = document.getElementById('dob').value;
+         var maritalstatus = document.getElementById('maritalstatus').value;
+         var spousename = document.getElementById('sname').value;
+         var email = document.getElementById('email').value;
+         var phone = document.getElementById('phone').value;
+         var password= document.getElementById('password').value;
+         var confirmpassword = document.getElementById('password2').value;
+		 
+		 // check values - if blank - turn labels red
+		 var formGood = true;
+		 if (lname == "") {
+			 formGood = false;
+			 document.getElementById('lnameLabel').className = "redtext";
+		 } else {
+			 document.getElementById('lnameLabel').className = "blacktext";
+		 }
+		 if (fname == "") {
+			 formGood = false;
+			 document.getElementById('fnameLabel').className = "redtext";
+		 } else {
+			 document.getElementById('fnameLabel').className = "blacktext";
+		 }
+		 if (address1 == "") {
+			 formGood = false;
+			 document.getElementById('address1Label').className = "redtext";
+		 } else {
+			 document.getElementById('address1Label').className = "blacktext";
+		 }
+		 if (address2 == "") {
+			 formGood = false;
+			 document.getElementById('address2Label').className = "redtext";
+		 } else {
+			 document.getElementById('address2Label').className = "blacktext";
+		 }
+         if (city == "") {
+			 formGood = false;
+			 document.getElementById('cityLabel').className = "redtext";
+		 } else {
+			 document.getElementById('cityLabel').className = "blacktext";
+		 }
+         if (state == "") {
+			 formGood = false;
+			 document.getElementById('stateLabel').className = "redtext";
+		 } else {
+			 document.getElementById('stateLabel').className = "blacktext";
+		 }
+         if (zipcode == "") {
+			 formGood = false;
+			 document.getElementById('zipcodeLabel').className = "redtext";
+		 } else {
+			 document.getElementById('zipcodeLabel').className = "blacktext";
+		 }
+         if (gender == "") {
+			 formGood = false;
+			 document.getElementById('genderLabel').className = "redtext";
+		 } else {
+			 document.getElementById('genderLabel').className = "blacktext";
+		 }
+		 if (dob == "") {
+			 formGood = false;
+			 document.getElementById('dobLabel').className = "redtext";
+		 } else {
+			 document.getElementById('dobLabel').className = "blacktext";
+		 }
+         if (maritalstatus == "") {
+			 formGood = false;
+			 document.getElementById('maritalstatusLabel').className = "redtext";
+		 } else {
+			 document.getElementById('maritalstatusLabel').className = "blacktext";
+		 }
+         if (spousename == "") {
+			 formGood = false;
+			 document.getElementById('snameLabel').className = "redtext";
+		 } else {
+			 document.getElementById('snameLabel').className = "blacktext";
+		 }
+         if (email == "") {
+			 formGood = false;
+			 document.getElementById('emailLabel').className = "redtext";
+		 } else {
+			 document.getElementById('emailLabel').className = "blacktext";
+		 }
+         if (phone == "") {
+			 formGood = false;
+			 document.getElementById('phoneLabel').className = "redtext";
+		 } else {
+			 document.getElementById('phoneLabel').className = "blacktext";
+		 }
+         if (password == "") {
+			 formGood = false;
+			 document.getElementById('passwordLabel').className = "redtext";
+		 } else {
+			 document.getElementById('passwordLabel').className = "blacktext";
+		 }
+         if (confirmpassword == "") {
+			 formGood = false;
+			 document.getElementById('password2Label').className = "redtext";
+		 } else {
+			 document.getElementById('address2Label').className = "blacktext";
+		 }
+         //unkown
+         if (password != confirmpassword){
+             formGood = false;
+             document.getElementById(passwordLabel).className = "redtext";
+         }
+         
+		 console.log(formGood);
+		 // OK to submit form?
+		 if (formGood) {
+			 document.getElementById('myForm').submit();
+		 } else {
+			; // write out error message
+		 }
+	  }
+   
+      function mstatusChange() {
+		  // get the value of the mstatus select listStyleType
+		  var mstatus = document.getElementById('mstatus').value;
+		  // if married - then turn spouse field onLine
+		  if (mstatus=="married") {
+			  document.getElementById('sname').disabled = false;
+		  } else {
+			  document.getElementById('sname').disabled = true;
+		  }
+	  }
+   
+      window.onload = function() 
+	  {
+		  document.getElementById("submitBtn").onclick = processForm;
+		  document.getElementById("mstatus").onchange = mstatusChange;
+	  }
+  </script>
+     <title>IT 2320 - Lab 4</title>
+  </head>
+  <body>
+     <h2>Caleb Keck - IT 2320 - Lab 4</h2>
+	 <form id="myForm" action = "https://www.waynedog.net/formreader.php" method="post">
+	     <label id="fnameLabel">First Name</label> <input type="text" id="fname" name="fname"><br />
+		 <label id="lnameLabel">Last Name</label> <input type="text" id="lname" name="lname"><br />
+		 <label id="address1Label">Address1</label> <input type="text" id="address1" name="address1"><br />
+         <label id="address2Label">Address2</label> <input type="text" id="address2" name="address2"><br />
+         <label id="cityLabel">City</label> <input type="text" id="city" name="city"><br />
+         <label id="stateLabel">State</label> <input type="text" id="state" name="state"><br />
+         <label id="zipcodeLabel">Zip Code</label> <input type="text" id="zipcode" name="zipcode"><br />
+         <label id="genderLabel">Gender</label> <input type="text" id="gender" name="gender"><br />
+		 <label id="dobLabel">Date of Birth</label> <input type="date" id="dob" name="dob"><br />
+		 <label for="mstatus" id="mstatuslabel" class="blacktext">Marital Status</label>           
+		 <select name="mstatus" id="mstatus">
+               <option value="">Choose one</option>
+               <option value="single">Single</option>
+               <option value="married">Married</option>
+         </select><br />
+         <label id="snameLabel">Spouce Name</label> <input type="text" id="sname" name="sname"><br />
+         <label id="emailLabel">Email</label> <input type="text" id="email" name="email"><br />
+         <label id="phoneLabel">Phone</label> <input type="text" id="phone" name="phone"><br />
+         <label id="passwordLabel">Password</label> <input type="text" id="password" name="password"><br />
+         <label id="password2Label">Confirm Password</label> <input type="text" id="password2" name="password2"><br />
+		
+         <button id="submitBtn">SUBMIT</button> - - <input type="reset" value=RESET>
+	 </form>
+  </body>
+</html>
