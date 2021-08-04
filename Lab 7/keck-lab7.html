@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script> 
+$(document).ready(function(){
+  $('#image').hide();
+  $("button").click(function(){
+		var w = $(window).width() - 400;
+		//window.alert(w);
+		var ws = w + 'px';
+		$('#image').fadeIn(1000);  // fade in
+		$('#image').animate({left: ws}, 3000); // moves across screen over 3 seconds
+		$('#image').attr('class', 'flipped');   // changes the class so he is flipped 
+		$('#image').animate({left: 0}, 3000, function(){ 
+			    $('#image').attr('class', 'flipped');   // moves im back the other way
+		    } );
+		$('#image').fadeOut(1000);  // fade out
+	});
+  });
+//});
+</script> 
+<style>
+.flipped {
+    transform: scale(-1, 1);
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -khtml-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+}
+.notflipped {
+    transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -khtml-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+}
+</style>
+</head>
+<body>
+
+<button>Start Animation</button>
+<br /><br />
+<!-- <div style="background:#98bf21;height:100px;width:100px;position:absolute;"></div>  -->
+<img src="images/guy-walking.gif" style="position:absolute;"  class="notflipped" id='image'>
+</body>
+</html>
