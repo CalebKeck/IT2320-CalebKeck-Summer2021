@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+   
+   </style>
+   <title>Lab 9 - Weather API</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script>
+   function getWeather() {
+     var zipCode = $('#zipCode').val();
+     var url = "http://api.openweathermap.org/data/2.5/weather?appid=a308a5bb5100455eae89dfd50cac39c4&zip="+zipCode+",us&units=imperial";
+     $.ajax({
+        method: "GET",
+        url: url,
+        dataType: "json"
+     }).done(function (weatherResponse) {
+            
+		 	$('#city').html(weatherResponse.name);
+			$('#conditions').html(weatherResponse.weather[0].description );
+			$('temp').html(weatherResponse.temp);
+			$('#wind').html(weatherResponse.wind.speed);
+			$('#highLow').html(weatherResponse.main.temp_min + " / " + weatherResponse.main.temp_max);
+	 })
+   }
+   </script>
+</head>
+<body>
+   <h2>Lab 9</h2>
+   ZIP Code:  <input type="text" id="zipCode"> <button id="go" onclick="getWeather()">Get Weather</button><br/><br/>
+   City:  <span id="city"></span><br/>
+   Conditions: <span id="conditions"></span><br/>
+   Temp: <span id="temp"></span><br/>
+   Wind Speed: <span id="wind"></span><br/>
+   Low  / High:  <span id="highLow"></span><br/>
+</body>
+
+</html>
