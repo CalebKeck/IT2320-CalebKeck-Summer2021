@@ -1,0 +1,52 @@
+<html>
+<head>
+<script>
+	const $ = selector => document.querySelector(selector);
+	const caption = $("#caption");
+	const mainImage = $("#main_image");
+
+	const links = $("image_list").querySelectorAll("a");
+
+	const imageCache = [];
+	let image = null;
+
+	for (let link of links) {
+		const image = new Image();
+		image.scr = "adams.jpg";
+
+		const image = new Image();
+		image.scr = "jackson.jpg";
+
+		const image = new Image();
+		image.scr = "jefferson.jpg";
+
+		const image = new Image();
+		image.scr = "madison.jpg";
+
+		const image = new Image();
+		image.scr = "washington.jpg";
+
+		imageCache[imageCache.length] = image;
+	}
+		let imageCounter = 0; 
+
+		setInterval( () => {
+			imageCounter = (imageCounter + 1) % imageCache.length;
+
+			image = imageCache[imageCounter];
+			mainImage.scr = image.scr;
+			mainImage.alt = image.alt;
+			caption.textContent = image.alt;
+		}
+		2000);
+</script>
+</head>
+<body>
+	<h2>Caleb Keck - IT 2320 - Lab 5</h2>
+	<p><center>
+	   Timer (seconds): <input type="text" id="timerVal" value="5"><br/><br/>
+	   <img src="images/adams.jpg"><br/><br/>
+	   <h2 id="timerCount">5</h2>
+	</center></p>
+</body>
+</html>
